@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Cadastro
+{% endblock %}
+
+{% block content %}
+    <h1>Cadastro</h1>
+    <form action="{{ url_for('auth.cadastro') }}" method="post">
+        <label for="nome">Nome</label>
+        <input type="text" name="nome" id="nome">
+        <label for="email">Email</label>
+        <input type="text" name="email" id="email">
+        <label for="senha">Senha</label>
+        <input type="password" name="senha" id="senha">
+        <button>Enviar</button>
+    </form>
+{% endblock %}
