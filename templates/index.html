@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Bibliotecla
+{% endblock %}
+
+{% block content %}
+    <h1>Bem-vindo!</h1>
+    <p>Organize seus empréstimos de livros de forma rápida e sem complicação.</p>
+    <p>Cadastre-se e comece a usar a biblioteca online da escola agora mesmo!</p>
+    <div id="sobre">
+        <h2>Sobre o Sistema</h2>
+        <p>
+            Este site foi criado para facilitar o controle de empréstimos de livros
+            e materiais literários da escola. Ele substitui o registro manual em 
+            cadernos ou planilhas, evitando erros, perda de informações e garantindo 
+            mais organização.
+        </p>
+        <p>
+            Aqui, alunos, professores e a equipe da biblioteca podem registrar empréstimos, 
+            marcar devoluções, consultar o histórico e cadastrar novos livros de forma 
+            simples e rápida.
+        </p>
+        <h2>Realize cadastro ou login!</h2>
+        <button><a href="{{ url_for('auth.cadastro')}}">Cadastro</a></button>
+        <button><a href="{{ url_for('auth.login')}}">Login</a></button>
+    </div>
+{% endblock %}
