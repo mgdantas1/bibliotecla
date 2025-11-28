@@ -18,6 +18,11 @@
             {% if current_user.is_authenticated %}
                 <li><a href="{{ url_for('livro.visualizar_livros') }}">Livros</a></li>
                 <li><a href="{{ url_for('emprestimo.visualizar_emprestimos') }}">Emprestimos</a></li>
+                <li><a href="{{ url_for('perfil.editar_perfil', user_id=current_user.id) }}">Editar Perfil</a></li>
+            </a></li>
+            <li><a href="{{ url_for('perfil.deletar_usuario', user_id=current_user.id) }}">
+                Deletar Perfil
+            </a></li>
             {% endif %}
         </ul>
     </nav>
@@ -28,3 +33,4 @@
     </main>
 </body>
 </html>
+
