@@ -1,0 +1,17 @@
+{% include 'base.html'   %}
+
+{% block title %}
+    Livros
+{% endblock %}
+
+{% block content %}
+    {% for livro in livros %}
+        {% if livro.quantidade > 0 %}
+            <div class="livro">
+                <h1>{{livro.titulo}}</h1>
+                <p>{{livro.autor}}</p>
+                <button><a href="{{ url_for('emprestimo.register_emprestimo', livro_id=livro.id) }}">Reservar</a></button>
+            </div>
+        {% endif %}
+    {% endfor %}
+{% endblock %}

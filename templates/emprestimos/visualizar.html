@@ -1,0 +1,36 @@
+{% include 'base.html'   %}
+
+{% block title %}
+    Empréstimos
+{% endblock %}
+
+{% block content %}
+    {% if emprestimos %}
+        <table>
+            <thead>
+                <th>ID</th>
+                <th>Data do Empréstimo</th>
+                <th>Data do prazo</th>
+                <th>Data da devolução</th>
+                <th>Status</th>
+                <th>Ações</th>
+            </thead>
+            <tbody>
+                {% for dado in emprestimos %}
+                    <tr>
+                        <td>{{dado.id}}</td>
+                        <td>{{dado.data_emprestimo}}</td>
+                        <td>{{dado.data_prazo}}</td>
+                        <td>{{dado.data_devolucao or 'Ainda não devolvido'}}</td>
+                        <td>{{dado.status}}</td>
+                        {% if dado.status != 'Devolvido' %}
+                            <td><button><a href="">Devolver</a></button></td>
+                        {% endif %}
+                        <td><button><a href="{{ url_for('emprestimo.editar_emprestimo', emprestimo_id=dado.id) }}">Editar</a></button></td>
+                        <td><button><a href="">Excluir</a></button></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+{% endblock %}

@@ -16,7 +16,8 @@
             <li><a href="{{ url_for('auth.cadastro') }}">Cadastro</a></li>
             <li><a href="{{ url_for('auth.login') }}">Login</a></li>
             {% if current_user.is_authenticated %}
-                <p>addff</p>
+                <li><a href="{{ url_for('livro.visualizar_livros') }}">Livros</a></li>
+                <li><a href="{{ url_for('emprestimo.visualizar_emprestimos') }}">Emprestimos</a></li>
             {% endif %}
         </ul>
     </nav>

@@ -1,0 +1,23 @@
+{% include 'base.html'   %}
+
+{% block title %}
+    Editar empréstimo
+{% endblock %}
+
+{% block content %}
+    <form action="{{ url_for('emprestimo.editar_emprestimo', emprestimo_id=emprestimo.id) }}" method="post">
+        <label for="data_emprestimo">Data do empréstimo:</label>
+        <input type="date" value="{{emprestimo.data_emprestimo}}" name="data_emprestimo">
+        <label for="data_prazo">Data do prazo:</label>
+        <input type="date" value="{{emprestimo.data_prazo}}" name="data_prazo">
+        <label for="data_devolucao">Data da devolução:</label>
+        <input type="date" value="{{emprestimo.data_devolucao}}" name="data_devolucao">
+        <label for="status">Status:</label>
+        <select name="status">
+            <option value="Pendente">Pendente</option>
+            <option value="Devolvido">Devolvido</option>
+            <option value="Atrasado">Atrasado</option>
+        </select>
+        <button>Enviar</button>
+    </form>
+{% endblock %}
