@@ -1,6 +1,4 @@
-<<<<<<< HEAD
 from database import popular_livros
-=======
 from flask import Flask, render_template
 from flask_login import LoginManager
 from sqlalchemy.orm import Session
@@ -24,4 +22,4 @@ def index():
     return render_template('index.html')
 
 app.register_blueprint(auth_bp)
->>>>>>> e0b3b7277467afa3a3f605a67dc94d7405c44021
+

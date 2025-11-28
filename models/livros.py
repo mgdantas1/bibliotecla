@@ -13,4 +13,5 @@ class Livros(Base):
     editora:Mapped[str] = mapped_column(String(50), nullable=False)
     genero:Mapped[str] = mapped_column(String(50), nullable=False)
     resumo:Mapped[str] = mapped_column(String(200), nullable=False)
+    quantidade:Mapped[int] = mapped_column(nullable=False)
 
