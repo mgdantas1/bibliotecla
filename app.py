@@ -5,6 +5,7 @@ from sqlalchemy.orm import Session
 from database import engine
 from models.usuario import Users
 from controllers.auth import auth_bp
+from controllers.perfil import perfil_bp
 
 app = Flask(__name__)
 app.secret_key = 'Segredo'
@@ -22,6 +23,7 @@ def index():
     return render_template('index.html')
 
 app.register_blueprint(auth_bp)
+app.register_blueprint(perfil_bp)
 
 if __name__ == '__main__':
     app.run(debug=True)

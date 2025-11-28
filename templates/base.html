@@ -11,15 +11,23 @@
 </head>
 <body>
     <nav>
-        <h1>Bibliotecla</h1>
-        <ul>
-            <li><a href="{{ url_for('auth.cadastro') }}">Cadastro</a></li>
-            <li><a href="{{ url_for('auth.login') }}">Login</a></li>
-            {% if current_user.is_authenticated %}
-                <p>addff</p>
-            {% endif %}
-        </ul>
-    </nav>
+    <h1>Bibliotecla</h1>
+    <ul>
+        <li><a href="{{ url_for('auth.cadastro') }}">Cadastro</a></li>
+        <li><a href="{{ url_for('auth.login') }}">Login</a></li>
+
+        {% if current_user.is_authenticated %}
+            <li><a href="{{ url_for('perfil.editar_perfil', user_id=current_user.id) }}">
+                Editar Perfil
+            </a></li>
+            <li><a href="{{ url_for('perfil.deletar_usuario', user_id=current_user.id) }}">
+                Deletar Perfil
+            </a></li>
+        {% endif %}
+</form>
+
+    </ul>
+</nav>
     <main>
         {% block content %}
             
@@ -27,3 +35,4 @@
     </main>
 </body>
 </html>
+
