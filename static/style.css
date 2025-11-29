@@ -185,3 +185,16 @@ span > h2{
     font-family: 'Braah One';
     font-size: 18px;
 }
+
+table {
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+tr, td, th {
+    border: 1px solid black;
+    padding: 5px 10px;
+    color: black;
+}
+
