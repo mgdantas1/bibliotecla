@@ -1,0 +1,187 @@
+* {
+    margin: 0;
+    box-sizing: border-box
+}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+body {
+    background: #405487;
+    background: linear-gradient(207deg,rgba(64, 84, 135, 0.92) 5%, rgba(64, 84, 135, 1) 30%, rgb(25, 47, 80) 75%);
+    min-height: 100vh;
+}
+
+
+/* NAVBAR */
+nav {
+    background-color: #1D2F60;
+    height: 120px;
+    border-bottom-left-radius: 18px;
+    border-bottom-right-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+}
+nav img{
+    height: 14vh;
+    width: 12vw;
+    min-width: 100px;
+    max-width: 120px;
+}
+ul {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+nav ul li{
+    list-style: none;
+    font-family: "Inter", sans-serif;
+    font-weight: bold;
+}
+nav ul li a {
+    color: #1D365C;
+    text-decoration: none;
+    background-color: white;
+    padding: 6px 28px;
+    border-radius: 10px;
+}
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    gap: 30px;
+}
+
+
+
+/* FORMS */
+h1 {
+    font-family: 'Braah One';
+    color: white;
+    margin-bottom: 18px;
+    font-size: 40px;
+}
+form {
+    background-color: #101C3A;
+    display: flex;
+    flex-direction: column;
+    padding: 26px;
+    width: 300px;
+    align-items: center;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    gap: 8px;
+}
+label {
+    align-self: flex-start;
+    font-family: 'Braah One';
+    color: white;
+    font-size: 18px;
+}
+input {
+    width: 100%;
+    border-radius: 20px;
+    border: none;
+    padding: 4px;
+}
+form button{
+    margin-top: 80px;
+    width: 100%;
+    font-family: 'Braah One';
+    font-size: 18px;
+    color: #101C3A;
+    background-color: white;
+    border-radius: 10px;
+    border: 0;
+    padding: 4px;
+
+}
+
+
+
+/* INDEX */
+#apresentacao {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+#apresentacao span {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#apresentacao h1 {
+    font-size: 70px;
+    align-self: flex-start;
+}
+#apresentacao p{
+    color: white;
+    font-family: "Inter", sans-serif;
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+#apresentacao img{
+    height: 40vh;
+    width: 50vw;
+    max-width: 500px;
+    min-width: 400px;
+}
+#apresentacao button{
+    background-color: white;
+    font-size: 24px;
+    font-family: 'Braah One';
+    border: 0;
+    padding: 10px 30px;
+    border-radius: 16px;
+    margin-top: 20px;
+}
+#apresentacao button a{
+    text-decoration: none;
+    color: #101C3A;
+}
+#sobre {
+    background-color: #3B4B6D;
+    font-family: 'Braah One';
+    color: white;
+    padding: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+#sobre span {
+    display: flex;
+    flex-direction: column;
+    align-items: center;   
+    text-align: center;   
+    gap: 10px;            
+}
+#sobre > h2{
+    margin: 30px 0;
+}
+#sobre p {
+    font-family: 'Braah One', sans-serif;
+    margin-bottom: 6px;
+}
+#sobre li{
+    background-color: #5F76B1;
+    border: 0;
+    padding: 20px 40px;
+    border-radius: 16px;
+    margin-left: 10px;
+    list-style: none;
+}
+span > h2{
+    margin-top: 20px;
+    margin-bottom: 6px;
+}
+#sobre a{
+    color: white;
+    text-decoration: none;
+    font-family: 'Braah One';
+    font-size: 18px;
+}
