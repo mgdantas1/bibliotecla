@@ -12,3 +12,4 @@ def visualizar_livros():
     with Session(bind=engine) as db:
         livros = db.query(Livros).all()
     return render_template('livros/visualizar.html', livros=livros)
+

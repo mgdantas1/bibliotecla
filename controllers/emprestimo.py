@@ -13,7 +13,7 @@ emprestimo_bp = Blueprint('emprestimo', __name__, template_folder='../templates/
 def visualizar_emprestimos():
     with Session(bind=engine) as db:
         emprestimos = db.query(Emprestimos).where(Emprestimos.user_id == current_user.id).all()
-    return render_template('emprestimos/visualizar.html', emprestimos=emprestimos)
+    return render_template('emprestimos/visualizar.html', emprestimos = emprestimos)
 
 
 @emprestimo_bp.route('/register_emprestimo/<int:livro_id>')
@@ -58,7 +58,46 @@ def editar_emprestimo(emprestimo_id: int):
     
     return render_template('emprestimos/editar.html', emprestimo=emprestimo)
 
-# falta criar a rota de deletar emprestimo
-    
 
+@emprestimo_bp.route('/devolver_livro/<int:emprestimo_id>', methods=['GET', 'POST'])
+@login_required
+def devolver_livro(emprestimo_id):
+    with Session(bind=engine) as db:
+        emprestimo = db.get(Emprestimos, emprestimo_id)
+        db.commit()
+
+        if not emprestimo:
+            flash("Emprestimo não encontrado")
+            return redirect(url_for("emprestimo.visualizar_emprestimo"))
+
+        if emprestimo.user_id != current_user.id:
+            flash("Você não tem permissão para devolver esse livro")
+            return redirect(url_for("emprestimo.visualizar_emprestimo"))
+
+        if emprestimo.status == "devolvido":
+            flash("Este livro já foi devolvido")
+            return redirect(url_for("emprestimo.visualizar_emprestimo"))
+    
+        emprestimo.status = "devolvido"
+        emprestimo.data_devolucao = date.today()
+        emprestimo.livro.quantidade += 1
+
+        db.commit()
+
+    flash('O livro foi devolvido')
+    return redirect(url_for("emprestimo.visualizar_emprestimos"))
+
+
+@emprestimo_bp.route('/rm_emprestimo/<int:emprestimo_id>', methods=['GET', 'POST'])
+@login_required
+def rm_emprestimo(emprestimo_id):
+    with Session(bind=engine) as db:
+        emprestimo = db.get(Emprestimos, emprestimo_id)
+        if emprestimo.status == 'Pendente':
+            emprestimo.livro.quantidade += 1
+        db.delete(emprestimo)
+        db.commit()
+
+    flash("Emprestimo deletado com sucesso")
+    return redirect(url_for('emprestimo.visualizar_emprestimos'))
 

@@ -24,6 +24,7 @@ def cadastro():
             flash('Usuário já cadastrado!')
     return render_template('cadastro.html')
 
+
 @auth_bp.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':

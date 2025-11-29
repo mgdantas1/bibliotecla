@@ -1,5 +1,5 @@
 from sqlalchemy import String, Date
-from sqlalchemy.orm import Mapped, mapped_column, Session
+from sqlalchemy.orm import Mapped, mapped_column
 from models import Base
 from datetime import date
 

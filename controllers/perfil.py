@@ -7,6 +7,15 @@ from database import engine
 from werkzeug.security import check_password_hash, generate_password_hash
 perfil_bp = Blueprint('perfil', __name__, template_folder='../templates/perfil')
 
+
+@perfil_bp.route('/visulaizar_perfil/<int:user_id>', methods=['GET'])
+@login_required
+def visualizar_perfil(user_id:int):
+    with Session(bind=engine) as db:
+        user = db.get(Users, user_id)
+    return render_template('perfil.html', user=user)
+
+
 @perfil_bp.route('/editar_perfil/<int:user_id>', methods=['GET', 'POST'])
 @login_required
 def editar_perfil(user_id:int):
@@ -29,6 +38,7 @@ def editar_perfil(user_id:int):
         return redirect(url_for('perfil.editar_perfil', user_id=user_id))
 
     return render_template('perfil/editar.html', user=user)
+
 
 @perfil_bp.route('/deletar_usuario')
 @login_required

@@ -24,10 +24,10 @@
                         <td>{{dado.data_devolucao or 'Ainda não devolvido'}}</td>
                         <td>{{dado.status}}</td>
                         {% if dado.status != 'Devolvido' %}
-                            <td><button><a href="">Devolver</a></button></td>
+                            <td><button><a href="{{ url_for('emprestimo.devolver_livro', emprestimo_id = dado.id) }}">Devolver</a></button></td>
                         {% endif %}
                         <td><button><a href="{{ url_for('emprestimo.editar_emprestimo', emprestimo_id=dado.id) }}">Editar</a></button></td>
-                        <td><button><a href="">Excluir</a></button></td>
+                        <td><button><a href="{{ url_for('emprestimo.rm_emprestimo', emprestimo_id=dado.id) }}">Excluir</a></button></td>
                     </tr>
                 {% endfor %}
             </tbody>
