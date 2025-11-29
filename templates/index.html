@@ -5,9 +5,15 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Bem-vindo!</h1>
-    <p>Organize seus empréstimos de livros de forma rápida e sem complicação.</p>
-    <p>Cadastre-se e comece a usar a biblioteca online da escola agora mesmo!</p>
+    <div id="apresentacao">
+        <span>
+            <h1>Bem-vindo!</h1>
+            <p>Organize seus empréstimos de livros de forma rápida e sem complicação.</p>
+            <p>Cadastre-se e comece a usar a biblioteca online da escola agora mesmo!</p>
+            <button><a href="{{ url_for('auth.cadastro')}}">Cadastrar</a></button>
+        </span>
+        <img src="../static/logo-branca.png" alt="">
+    </div>
     <div id="sobre">
         <h2>Sobre o Sistema</h2>
         <p>
@@ -21,8 +27,14 @@
             marcar devoluções, consultar o histórico e cadastrar novos livros de forma 
             simples e rápida.
         </p>
-        <h2>Realize cadastro ou login!</h2>
-        <button><a href="{{ url_for('auth.cadastro')}}">Cadastro</a></button>
-        <button><a href="{{ url_for('auth.login')}}">Login</a></button>
+
+        <span>
+            <h2>Realize cadastro ou login!</h2>
+            <ul>
+                <li><a href="{{ url_for('auth.cadastro')}}">Cadastro</a></li>
+                <li><a href="{{ url_for('auth.login')}}">Login</a></li>
+            </ul>
+            
+        </span>
     </div>
 {% endblock %}
