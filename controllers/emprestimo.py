@@ -46,11 +46,13 @@ def editar_emprestimo(emprestimo_id: int):
         data_emprestimo = request.form['data_emprestimo']
         data_prazo = request.form['data_prazo']
         data_devolucao = request.form['data_devolucao']
+        status = request.form['status']
         with Session(bind=engine) as db:
             emprestimo = db.get(Emprestimos, emprestimo_id)
             emprestimo.data_emprestimo = data_emprestimo
             emprestimo.data_prazo = data_prazo
             emprestimo.data_devolucao = data_devolucao
+            emprestimo.status = status
             db.commit()
         
         flash('Empréstimo editado com sucesso!')
@@ -78,7 +80,7 @@ def devolver_livro(emprestimo_id):
             flash("Este livro já foi devolvido")
             return redirect(url_for("emprestimo.visualizar_emprestimo"))
     
-        emprestimo.status = "devolvido"
+        emprestimo.status = "Devolvido"
         emprestimo.data_devolucao = date.today()
         emprestimo.livro.quantidade += 1
 
