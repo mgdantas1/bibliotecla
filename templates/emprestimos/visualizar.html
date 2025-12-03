@@ -12,17 +12,19 @@
     {% if emprestimos %}
         <table>
             <thead>
-                <th>ID</th>
+                <th><p>ID</p></th>
+                <th>Livro</th>
                 <th>Data do Empréstimo</th>
                 <th>Data do prazo</th>
                 <th>Data da devolução</th>
                 <th>Status</th>
-                <th>Ações</th>
+                <th colspan="3">Ações</th>
             </thead>
             <tbody>
                 {% for dado in emprestimos %}
                     <tr>
                         <td>{{dado.id}}</td>
+                        <td>{{dado.livro.titulo}}</td>
                         <td>{{dado.data_emprestimo}}</td>
                         <td>{{dado.data_prazo}}</td>
                         <td>{{dado.data_devolucao or 'Ainda não devolvido'}}</td>

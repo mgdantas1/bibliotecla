@@ -13,7 +13,7 @@ emprestimo_bp = Blueprint('emprestimo', __name__, template_folder='../templates/
 def visualizar_emprestimos():
     with Session(bind=engine) as db:
         emprestimos = db.query(Emprestimos).where(Emprestimos.user_id == current_user.id).all()
-    return render_template('emprestimos/visualizar.html', emprestimos = emprestimos)
+        return render_template('emprestimos/visualizar.html', emprestimos = emprestimos)
 
 
 @emprestimo_bp.route('/register_emprestimo/<int:livro_id>')

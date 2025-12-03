@@ -4,6 +4,10 @@
     Editar empréstimo
 {% endblock %}
 
+{% block title_page %}
+    Editar empréstimo
+{% endblock %}
+
 {% block content %}
     <form action="{{ url_for('emprestimo.editar_emprestimo', emprestimo_id=emprestimo.id) }}" method="post">
         <label for="data_emprestimo">Data do empréstimo:</label>

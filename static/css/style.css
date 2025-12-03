@@ -1,8 +1,20 @@
 * {
     margin: 0;
+    padding: 0;
     box-sizing: border-box
 }
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+
+:root {
+    --cor1: #101C3A;
+    --cor2: #1D2F60;
+    --cor3: #1D365C;
+    --cor4: #3B4B6D;
+    --cor5: #405487;
+    --cor5: #5F76B1;
+}
 
 body {
     background: #405487;
@@ -10,6 +22,20 @@ body {
     min-height: 100vh;
 }
 
+h1 {
+    font-family: 'Braah One';
+    color: white;
+    font-size: 40px;
+}
+
+h2 {
+    font-family: 'Braah One';
+    color: white;
+}
+
+li {
+    list-style: none;
+}
 
 /* NAVBAR */
 nav {
@@ -28,16 +54,12 @@ nav img{
     min-width: 100px;
     max-width: 120px;
 }
-ul {
+nav ul {
     display: flex;
     gap: 15px;
     flex-wrap: wrap;
 }
-li {
-    list-style: none;
-}
 nav ul li{
-    list-style: none;
     font-family: "Inter", sans-serif;
     font-weight: bold;
 }
@@ -48,6 +70,8 @@ nav ul li a {
     padding: 6px 28px;
     border-radius: 10px;
 }
+
+/* MAIN */
 main {
     display: flex;
     flex-direction: column;
@@ -60,12 +84,6 @@ main {
 
 
 /* FORMS */
-h1 {
-    font-family: 'Braah One';
-    color: white;
-    margin-bottom: 18px;
-    font-size: 40px;
-}
 form {
     background-color: #101C3A;
     display: flex;
@@ -76,6 +94,7 @@ form {
     border-top-right-radius: 20px;
     border-bottom-left-radius: 20px;
     gap: 8px;
+    height: 350px;
 }
 label {
     align-self: flex-start;
@@ -85,12 +104,13 @@ label {
 }
 input {
     width: 100%;
-    border-radius: 20px;
+    border-radius: 10px;
     border: none;
     padding: 4px;
+    padding: 5px;
+    outline: none;
 }
 form button{
-    margin-top: 80px;
     width: 100%;
     font-family: 'Braah One';
     font-size: 18px;
@@ -99,9 +119,17 @@ form button{
     border-radius: 10px;
     border: 0;
     padding: 4px;
-
+    margin-top: auto;
 }
-
+form select {
+    width: 100%;
+    background-color: white;
+    padding: 5px;
+}
+form option {
+    padding: 10px;
+    font-family: 'Baah One', sans-serif;
+}
 
 
 /* INDEX */
@@ -166,7 +194,8 @@ form button{
     text-align: center;
 }
 #sobre span ul {
-    padding-left: 0;
+    display: flex;
+    gap: 15px;
 }
 #sobre > h2{
     margin: 30px 0;
@@ -190,17 +219,93 @@ span > h2{
     font-size: 18px;
 }
 
-
+/* TABELA LIVROS */
 table {
-    border: 1px solid black;
+    width: 90%;
     border-collapse: collapse;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px #00000026;
+    font-family: "Inter", sans-serif;
     text-align: center;
 }
 
-tr, td, th {
-    border: 1px solid black;
-    padding: 5px 10px;
-    color: black;
+thead tr {
+    background-color: var(--cor1);
+}
+
+th {
+    text-align: center;
+    padding: 14px 10px;
+    color: white;
+    font-size: 18px;
+    font-family: 'Braah One', sans-serif;
+    letter-spacing: 1px;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #eef2f9;
+}
+
+td {
+    border-bottom: 1px solid #c5cde0;
+    padding: 12px 10px;
+    color: var(--cor1);
+    font-size: 16px;
+}
+
+table button {
+    background-color: var(--cor2);
+    font-family: 'Braah One';
+    border: 0;
+    padding: 8px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+table a {
+    text-decoration: none;
+    color: white;
+}
+
+
+/* PERFIL */
+.button-perfil {
+    background-color: var(--cor2);
+    font-family: 'Braah One';
+    border: 0;
+    padding: 10px 30px;
+    border-radius: 16px;
+}
+.button-perfil a{
+    text-decoration: none;
+    color: white;
+}
+#dados-perfil {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--cor2);
+    text-align: center;
+    gap: 15px;
+    background-color: white;
+    padding: 25px;
+    border-radius: 25px;
+}
+#dados-perfil ul {
+    display: flex;
+    gap: 10px;
+}
+#dados-perfil li {
+    font-family: "Inter", sans-serif;
+    align-self: self-start;
+}
+#dados-perfil img {
+    width: 150px;
+    height: 100%;
 }
 
 @media screen and (max-width: 768px) {

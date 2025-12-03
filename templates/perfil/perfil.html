@@ -1,18 +1,25 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    Página do Usuario
+    Perfil
 {% endblock %}
 
 {% block title_page %}
-    Página de perfil
+    Perfil
 {% endblock %}
 
 {% block content %}
     <h2>Dados do Usuário</h2>
-    <ul>
+    <ul id="dados-perfil">
+        <img src="../../static/imagens/profile.svg" alt="">
         <li>Nome: {{ user.nome }}</li>
         <li>Email: {{ user.email }}</li>
         <li>Senha: *** </li>
+        <span>
+            <ul>
+                <li><button class="button-perfil"><a href="{{ url_for('perfil.editar_perfil', user_id=user.id) }}">Editar</button></a></li>
+                <li><button class="button-perfil"><a href="{{ url_for('perfil.deletar_usuario', user_id=user.id) }}">Excluir</a></button></li>
+            </ul>
+        </span>
     </ul>
 {% endblock %}
