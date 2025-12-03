@@ -1,6 +1,6 @@
 from flask import redirect, request, render_template, url_for, Blueprint, flash
 from sqlalchemy.orm import Session
-from flask_login import login_user
+from flask_login import login_user, logout_user, login_required
 from models.usuario import Users
 from database import engine
 from werkzeug.security import check_password_hash, generate_password_hash
@@ -38,3 +38,8 @@ def login():
             flash('Dados incorretos!')
     return render_template('login.html')
 
+@auth_bp.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('index'))
