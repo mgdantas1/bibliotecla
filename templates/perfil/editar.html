@@ -9,7 +9,6 @@
 {% endblock %}
 
 {% block content %}
-    <h2>Editar Perfil</h2>
     <form action="{{ url_for('perfil.editar_perfil', user_id=user.id) }}" method="post">
     <label for="nome">Nome:</label>
     <input type="text" id="nome" name="nome" value="{{ user.nome }}" required>

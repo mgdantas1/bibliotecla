@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet" href="../static/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Braah+One&display=swap" rel="stylesheet">
@@ -15,23 +15,26 @@
 </head>
 <body>
     <nav>
-        <a href="{{ url_for('index') }}"><img src="../static/logo-branca.png" alt=""></a>
+        <a href="{{ url_for('index') }}"><img src="../static/imagens/logo-branca.png" alt=""></a>
         <ul>
-            <li><a href="{{ url_for('auth.cadastro') }}">Cadastro</a></li>
-            <li><a href="{{ url_for('auth.login') }}">Login</a></li>
+            <li><a href="{{ url_for('index') }}">Início</a></li>
             {% if current_user.is_authenticated %}
                 <li><a href="{{ url_for('livro.visualizar_livros') }}">Livros</a></li>
                 <li><a href="{{ url_for('emprestimo.visualizar_emprestimos') }}">Emprestimos</a></li>
-                <li><a href="{{ url_for('perfil.editar_perfil', user_id=current_user.id) }}">Editar Perfil</a></li>
-                <li><a href="{{ url_for('perfil.visualizar_perfil', user_id=current_user.id) }}">Visualizar Perfil</a></li>
-            </a></li>
-            <li><a href="{{ url_for('perfil.deletar_usuario', user_id=current_user.id) }}">
-                Deletar Perfil
-            </a></li>
+                <li><a href="{{ url_for('perfil.visualizar_perfil', user_id=current_user.id) }}">Perfil</a></li>
+                <li><a href="{{ url_for('auth.logout') }}">Logout</a></li>
+            {% else %}    
+                <li><a href="{{ url_for('auth.cadastro') }}">Cadastro</a></li>
+                <li><a href="{{ url_for('auth.login') }}">Login</a></li>
             {% endif %}
         </ul>
     </nav>
     <main>
+        <h1>
+            {% block title_page %}
+                
+            {% endblock %}
+        </h1>
         {% block content %}
             
         {% endblock %}
