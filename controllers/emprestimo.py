@@ -48,6 +48,9 @@ def editar_emprestimo(emprestimo_id: int):
         data_devolucao = request.form['data_devolucao']
         status = request.form['status']
         with Session(bind=engine) as db:
+            if emprestimo.status == 'Devolvido':
+                flash("A ação não pode ser realizada!")
+                return redirect(url_for('emprestimo.visualizar_emprestimos'))
             emprestimo = db.get(Emprestimos, emprestimo_id)
             emprestimo.data_emprestimo = data_emprestimo
             emprestimo.data_prazo = data_prazo
@@ -66,7 +69,6 @@ def editar_emprestimo(emprestimo_id: int):
 def devolver_livro(emprestimo_id):
     with Session(bind=engine) as db:
         emprestimo = db.get(Emprestimos, emprestimo_id)
-        db.commit()
 
         if not emprestimo:
             flash("Emprestimo não encontrado")
@@ -76,7 +78,7 @@ def devolver_livro(emprestimo_id):
             flash("Você não tem permissão para devolver esse livro")
             return redirect(url_for("emprestimo.visualizar_emprestimo"))
 
-        if emprestimo.status == "devolvido":
+        if emprestimo.status == "Devolvido":
             flash("Este livro já foi devolvido")
             return redirect(url_for("emprestimo.visualizar_emprestimo"))
     
@@ -95,11 +97,10 @@ def devolver_livro(emprestimo_id):
 def rm_emprestimo(emprestimo_id):
     with Session(bind=engine) as db:
         emprestimo = db.get(Emprestimos, emprestimo_id)
-        if emprestimo.status == 'Pendente':
-            emprestimo.livro.quantidade += 1
-        db.delete(emprestimo)
-        db.commit()
-
-    flash("Emprestimo deletado com sucesso")
+        if emprestimo.status == 'Devolvido':
+            db.delete(emprestimo)
+            db.commit()
+            flash("Emprestimo deletado com sucesso")
+        flash("A ação não pode ser realizada!")
     return redirect(url_for('emprestimo.visualizar_emprestimos'))
 
