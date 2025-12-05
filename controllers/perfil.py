@@ -34,7 +34,7 @@ def editar_perfil(user_id:int):
             user.senha = generate_password_hash(senha)
             db.commit()
 
-        flash('Usuário editado com sucesso!')
+        flash('Usuário editado com sucesso!', category='success')
         return redirect(url_for('perfil.visualizar_perfil', user_id=user_id))
 
     return render_template('perfil/editar.html', user=user)
@@ -53,6 +53,6 @@ def deletar_usuario():
         db.delete(user)
         db.commit()
 
-    flash("Usuário deletado com sucesso!")
+    flash("Usuário deletado com sucesso!", category='success')
     return redirect(url_for('index'))
 

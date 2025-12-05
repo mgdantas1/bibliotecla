@@ -32,7 +32,7 @@ def register_emprestimo(livro_id: int):
         livro.quantidade -= 1
         db.commit()
 
-    flash('Empréstimo realizado com sucesso!')
+    flash('Empréstimo realizado com sucesso!', category='success')
     return redirect(url_for('emprestimo.visualizar_emprestimos'))
     
 
@@ -49,7 +49,7 @@ def editar_emprestimo(emprestimo_id: int):
         status = request.form['status']
         with Session(bind=engine) as db:
             if emprestimo.status == 'Devolvido':
-                flash("A ação não pode ser realizada!")
+                flash("A ação não pode ser realizada!", category='error')
                 return redirect(url_for('emprestimo.visualizar_emprestimos'))
             emprestimo = db.get(Emprestimos, emprestimo_id)
             emprestimo.data_emprestimo = data_emprestimo
@@ -58,7 +58,7 @@ def editar_emprestimo(emprestimo_id: int):
             emprestimo.status = status
             db.commit()
         
-        flash('Empréstimo editado com sucesso!')
+        flash('Empréstimo editado com sucesso!', category='success')
         return redirect(url_for('emprestimo.visualizar_emprestimos'))
     
     return render_template('emprestimos/editar.html', emprestimo=emprestimo)
@@ -71,15 +71,15 @@ def devolver_livro(emprestimo_id):
         emprestimo = db.get(Emprestimos, emprestimo_id)
 
         if not emprestimo:
-            flash("Emprestimo não encontrado")
+            flash("Emprestimo não encontrado", category='error')
             return redirect(url_for("emprestimo.visualizar_emprestimo"))
 
         if emprestimo.user_id != current_user.id:
-            flash("Você não tem permissão para devolver esse livro")
+            flash("Você não tem permissão para devolver esse livro", category='error')
             return redirect(url_for("emprestimo.visualizar_emprestimo"))
 
         if emprestimo.status == "Devolvido":
-            flash("Este livro já foi devolvido")
+            flash("Este livro já foi devolvido", category='error')
             return redirect(url_for("emprestimo.visualizar_emprestimo"))
     
         emprestimo.status = "Devolvido"
@@ -88,7 +88,7 @@ def devolver_livro(emprestimo_id):
 
         db.commit()
 
-    flash('O livro foi devolvido')
+    flash('O livro foi devolvido', category='success')
     return redirect(url_for("emprestimo.visualizar_emprestimos"))
 
 
@@ -100,7 +100,7 @@ def rm_emprestimo(emprestimo_id):
         if emprestimo.status == 'Devolvido':
             db.delete(emprestimo)
             db.commit()
-            flash("Emprestimo deletado com sucesso")
-        flash("A ação não pode ser realizada!")
+            flash("Emprestimo deletado com sucesso", category='succes')
+        flash("A ação não pode ser realizada!", category='error')
     return redirect(url_for('emprestimo.visualizar_emprestimos'))
 

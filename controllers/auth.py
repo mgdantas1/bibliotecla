@@ -21,7 +21,7 @@ def cadastro():
                 session.commit()
                 login_user(user_novo)
                 return redirect(url_for('index'))
-            flash('Usuário já cadastrado!')
+            flash('Usuário já cadastrado!', category='error')
     return render_template('cadastro.html')
 
 
@@ -35,7 +35,7 @@ def login():
             if user_exist and check_password_hash(user_exist.senha, senha):
                 login_user(user_exist)
                 return redirect(url_for('index'))
-            flash('Dados incorretos!')
+            flash('Dados incorretos!', category='success')
     return render_template('login.html')
 
 @auth_bp.route('/logout')
