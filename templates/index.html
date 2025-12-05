@@ -5,15 +5,28 @@
 {% endblock %}
 
 {% block content %}
-    <div id="apresentacao">
-        <span>
-            <h1>Bem-vindo!</h1>
-            <p>Organize seus empréstimos de livros de forma rápida e sem complicação.</p>
-            <p>Cadastre-se e comece a usar a biblioteca online da escola agora mesmo!</p>
-            <button><a href="{{ url_for('auth.cadastro')}}">Cadastrar</a></button>
-        </span>
-        <img src="../static/imagens/logo-branca.png" alt="">
-    </div>
+    {% if current_user.is_authenticated %}
+        <div id="livro_apresentacao">
+            {% for livro in livros %}
+                <div>
+                    <img src="../static/imagens/{{livro.id}}.jpg" alt="">
+                    <h2>{{livro.titulo}}</h2>
+                    <h3>{{livro.autor}}</h3>
+                    <button><a href="{{ url_for('emprestimo.register_emprestimo', livro_id=livro.id) }}">Reservar</a></button>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div id="apresentacao">
+            <span>
+                <h1>Bem-vindo!</h1>
+                <p>Organize seus empréstimos de livros de forma rápida e sem complicação.</p>
+                <p>Cadastre-se e comece a usar a biblioteca online da escola agora mesmo!</p>
+                <button><a href="{{ url_for('auth.cadastro')}}">Cadastrar</a></button>
+            </span>
+            <img src="../static/imagens/logo-branca.png" alt="">
+        </div>
+    {% endif %}
     <div id="sobre">
         <h2>Sobre o Sistema</h2>
         <p>

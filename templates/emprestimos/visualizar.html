@@ -10,35 +10,37 @@
 
 {% block content %}
     {% if emprestimos %}
-        <table>
-            <thead>
-                <th><p>ID</p></th>
-                <th>Livro</th>
-                <th>Data do Empréstimo</th>
-                <th>Data do prazo</th>
-                <th>Data da devolução</th>
-                <th>Status</th>
-                <th colspan="3">Ações</th>
-            </thead>
-            <tbody>
-                {% for dado in emprestimos %}
-                    <tr>
-                        <td>{{dado.id}}</td>
-                        <td>{{dado.livro.titulo}}</td>
-                        <td>{{dado.data_emprestimo}}</td>
-                        <td>{{dado.data_prazo}}</td>
-                        <td>{{dado.data_devolucao or 'Ainda não devolvido'}}</td>
-                        <td>{{dado.status}}</td>
-                        {% if dado.status != 'Devolvido' %}
-                            <td><button><a href="{{ url_for('emprestimo.devolver_livro', emprestimo_id = dado.id) }}">Devolver</a></button></td>
-                        {% endif %}
-                        <td><button><a href="{{ url_for('emprestimo.editar_emprestimo', emprestimo_id=dado.id) }}">Editar</a></button></td>
-                        {% if dado.status == 'Devolvido' %}
-                            <td><button><a href="{{ url_for('emprestimo.rm_emprestimo', emprestimo_id=dado.id) }}">Excluir</a></button></td>
-                        {% endif %}
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+        <div class="table">
+            <table>
+                <thead>
+                    <th><p>ID</p></th>
+                    <th>Livro</th>
+                    <th>Data do Empréstimo</th>
+                    <th>Data do prazo</th>
+                    <th>Data da devolução</th>
+                    <th>Status</th>
+                    <th colspan="3">Ações</th>
+                </thead>
+                <tbody>
+                    {% for dado in emprestimos %}
+                        <tr>
+                            <td>{{dado.id}}</td>
+                            <td>{{dado.livro.titulo}}</td>
+                            <td>{{dado.data_emprestimo}}</td>
+                            <td>{{dado.data_prazo}}</td>
+                            <td>{{dado.data_devolucao or 'Ainda não devolvido'}}</td>
+                            <td>{{dado.status}}</td>
+                            {% if dado.status != 'Devolvido' %}
+                                <td><button><a href="{{ url_for('emprestimo.devolver_livro', emprestimo_id = dado.id) }}">Devolver</a></button></td>
+                            {% endif %}
+                            <td><button><a href="{{ url_for('emprestimo.editar_emprestimo', emprestimo_id=dado.id) }}">Editar</a></button></td>
+                            {% if dado.status == 'Devolvido' %}
+                                <td><button><a href="{{ url_for('emprestimo.rm_emprestimo', emprestimo_id=dado.id) }}">Excluir</a></button></td>
+                            {% endif %}
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
     {% endif %}
 {% endblock %}

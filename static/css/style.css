@@ -62,13 +62,15 @@ nav ul {
 nav ul li{
     font-family: "Inter", sans-serif;
     font-weight: bold;
+    width: 150px;
+    background-color: white;
+    padding: 6px 28px;
+    border-radius: 10px;
+    text-align: center;
 }
 nav ul li a {
     color: #1D365C;
     text-decoration: none;
-    background-color: white;
-    padding: 6px 28px;
-    border-radius: 10px;
 }
 
 /* MAIN */
@@ -132,6 +134,25 @@ form option {
 }
 
 
+/* FLASH */
+#success, #error {
+    font-family: 'Braah One', sans-serif;
+    color: #101C3A;
+    padding: 15px;
+    width: 500px;
+    border-radius: 15px;
+}
+
+#success {
+    background-color: var(--cor5);
+}
+
+#error {
+    background-color: #874040;
+    color: white;
+}
+
+
 /* INDEX */
 #apresentacao {
     height: 100%;
@@ -189,7 +210,7 @@ form option {
     align-items: center;   
     justify-content: center;
     flex-direction: column;
-    gap: 20px;
+
     width: 100%;
     text-align: center;
 }
@@ -197,7 +218,7 @@ form option {
     display: flex;
     gap: 15px;
 }
-#sobre > h2{
+#sobre h2{
     margin: 30px 0;
 }
 #sobre p {
@@ -209,15 +230,50 @@ form option {
     padding: 20px 40px;
     border-radius: 16px;
 }
-span > h2{
-    margin-top: 20px;
-}
 #sobre a{
     color: white;
     text-decoration: none;
     font-family: 'Braah One';
     font-size: 18px;
 }
+
+#livro_apresentacao {
+   background-color: white;
+   padding: 25px;
+   border-radius: 15px; 
+   box-shadow: 0 4px 10px #00000026;
+   display: flex;
+   gap: 15px;
+   color: var(--cor1);
+   font-family: 'Braah One', sans-serif;
+}
+
+#livro_apresentacao div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 20%;
+}
+
+#livro_apresentacao img {
+    width: 100%;
+    border-radius: 15px;
+}
+
+#livro_apresentacao button {
+    background-color: var(--cor2);
+    font-family: 'Braah One';
+    border: 0;
+    padding: 8px 20px;
+    border-radius: 10px;
+    margin-top: auto;
+}
+
+#livro_apresentacao a {
+    text-decoration: none;
+    color: white;
+}
+
 
 /* TABELA LIVROS */
 table {
@@ -230,6 +286,8 @@ table {
     font-family: "Inter", sans-serif;
     text-align: center;
 }
+
+
 
 thead tr {
     background-color: var(--cor1);
@@ -261,8 +319,6 @@ table button {
     border: 0;
     padding: 8px 20px;
     border-radius: 10px;
-    cursor: pointer;
-    transition: 0.2s;
 }
 
 table a {
@@ -308,12 +364,160 @@ table a {
     height: 100%;
 }
 
+/* LIVROS */
+.livro {
+    display: flex;
+    width: 100%;
+    gap: 25px;
+    background-color: white;
+    padding: 25px;
+    border-radius: 15px;
+    font-family: 'Inter', sans-serif;
+}
+.livro h1, h2 {
+    color: var(--cor1);
+}
+.livro img {
+    max-width: 350px;
+    height: 100%;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px #00000026;
+}
+.livro button {
+    background-color: var(--cor2);
+    font-family: 'Braah One';
+    border: 0;
+    padding: 8px 20px;
+    border-radius: 10px;
+    width: 100px;
+}
+.livro a {
+    text-decoration: none;
+    color: white;
+}
+.livro span {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 @media screen and (max-width: 768px) {
     #apresentacao {
         justify-content: center;
         text-align: center;
     }
-    #apresentacao img {
-        max-width: 250px;
+    #livro_apresentacao {
+        flex-direction: column;
+        background: none;
+        box-shadow: none;
+        padding: 0;
+        text-align: center;
+    }
+    #livro_apresentacao div {
+        align-items: center;
+        width: 100%;
+        background-color: white;
+        padding: 15px;
+        border-radius: 15px;
+        box-shadow: 0 4px 10px #00000026;
+    }
+    #livro_apresentacao img {
+        height: 100%;
+        max-width: 100%;
+    }
+    .livro {
+        flex-direction: column;
+        align-items: center;
+    }
+    .livro img{
+        max-width: 100%;
+    }
+    .livro button {
+        width: 100%;
+    }
+    #sobre a {
+        font-size: 1em;
+    }
+    nav {
+        flex-direction: column;
+        height: auto;
+        padding: 20px;
+        gap: 10px;
+    }
+
+    nav img {
+        width: 40vw;
+        height: auto;
+        max-width: 150px;
+    }
+
+    nav ul {
+        flex-wrap: wrap;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+    }
+    
+    nav ul li {
+        background: none;
+        padding: 10px;
+        width: auto;
+        padding: 0;
+    }
+
+    nav ul li a {
+        position: relative;
+        color: white;
+        text-decoration: none;
+    }
+
+    nav ul li a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -3px; 
+        width: 0%;
+        height: 2px;
+        background-color: var(--cor5);
+        transition: width 0.3s ease;
+    }
+
+    nav ul li a:hover::after {
+        width: 100%;
+    }
+
+    .table {
+    width: 100%;
+    overflow-x: scroll;
+    }
+    .table::-webkit-scrollbar {
+        height: 10px;     
+        width: 10px;      
+    }
+
+    .table::-webkit-scrollbar-track {
+        background: #c5cde0; 
+        border-radius: 10px;
+    }
+
+    .table::-webkit-scrollbar-thumb {
+        background-color: var(--cor2);
+        border-radius: 10px;
+        border: 2px solid #c5cde0;
+    }
+
+    .table::-webkit-scrollbar-thumb:hover {
+        background-color: var(--cor1);
+    }
+
+    table {
+        min-width: 600px; 
+    }
+
+    th, td {
+        padding: 10px;
+        font-size: 14px;
+        white-space: nowrap; 
     }
 }
