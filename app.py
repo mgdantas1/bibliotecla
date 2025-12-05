@@ -4,6 +4,7 @@ from flask_login import LoginManager
 from sqlalchemy.orm import Session
 from database import engine
 from models.usuario import Users
+from models.livros import Livros
 from controllers.auth import auth_bp
 from controllers.emprestimo import emprestimo_bp
 from controllers.livros import livros_bp
@@ -23,7 +24,9 @@ def load_user(user_id):
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    with Session(bind=engine) as session:
+        livros = session.query(Livros).all()
+        return render_template('index.html', livros=livros)
 
 app.register_blueprint(auth_bp)
 app.register_blueprint(emprestimo_bp)
