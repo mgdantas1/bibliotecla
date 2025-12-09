@@ -6,10 +6,10 @@ from models.livros import Livros
 
 livros_bp = Blueprint('livro', __name__, template_folder='../templates/livros')
 
-@livros_bp.route('/visualizar_livros')
+@livros_bp.route('/listar_livros')
 @login_required
-def visualizar_livros():
+def listar_livros():
     with Session(bind=engine) as db:
         livros = db.query(Livros).all()
-    return render_template('livros/visualizar.html', livros=livros)
+    return render_template('livros/listar.html', livros=livros)
 

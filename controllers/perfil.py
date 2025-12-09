@@ -8,12 +8,12 @@ from database import engine
 perfil_bp = Blueprint('perfil', __name__, template_folder='../templates/perfil')
 
 
-@perfil_bp.route('/visulaizar_perfil/<int:user_id>', methods=['GET'])
+@perfil_bp.route('/listar_perfil/<int:user_id>', methods=['GET'])
 @login_required
-def visualizar_perfil(user_id:int):
+def listar_perfil(user_id:int):
     with Session(bind=engine) as db:
         user = db.get(Users, user_id)
-    return render_template('perfil.html', user=user)
+    return render_template('perfil/listar.html', user=user)
 
 
 @perfil_bp.route('/editar_perfil/<int:user_id>', methods=['GET', 'POST'])
@@ -35,12 +35,12 @@ def editar_perfil(user_id:int):
             db.commit()
 
         flash('Usuário editado com sucesso!', category='success')
-        return redirect(url_for('perfil.visualizar_perfil', user_id=user_id))
+        return redirect(url_for('perfil.listar_perfil', user_id=user_id))
 
     return render_template('perfil/editar.html', user=user)
 
 
-@perfil_bp.route('/deletar_usuario')
+@perfil_bp.route('/deletar_usuario', methods=['GET'])
 @login_required
 def deletar_usuario():
     with Session(bind=engine) as db:
