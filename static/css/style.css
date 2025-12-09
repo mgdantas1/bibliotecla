@@ -14,10 +14,11 @@
     --cor4: #3B4B6D;
     --cor5: #405487;
     --cor5: #5F76B1;
+    --cor6: #5F76B1;
 }
 
 body {
-    background: #405487;
+    background: var(--cor5);
     background: linear-gradient(207deg,rgba(64, 84, 135, 0.92) 5%, rgba(64, 84, 135, 1) 30%, rgb(25, 47, 80) 75%);
     min-height: 100vh;
 }
@@ -39,7 +40,7 @@ li {
 
 /* NAVBAR */
 nav {
-    background-color: #1D2F60;
+    background-color: var(--cor2);
     height: 120px;
     border-bottom-left-radius: 18px;
     border-bottom-right-radius: 18px;
@@ -48,9 +49,9 @@ nav {
     justify-content: space-between;
     padding: 10px;
 }
-nav img{
-    height: 14vh;
-    width: 12vw;
+#logo {
+    height: 100%;
+    width: 10vw;
     min-width: 100px;
     max-width: 120px;
 }
@@ -69,7 +70,7 @@ nav ul li{
     text-align: center;
 }
 nav ul li a {
-    color: #1D365C;
+    color: var(--cor3);
     text-decoration: none;
 }
 
@@ -87,7 +88,7 @@ main {
 
 /* FORMS */
 form {
-    background-color: #101C3A;
+    background-color: var(--cor1);
     display: flex;
     flex-direction: column;
     padding: 26px;
@@ -116,7 +117,7 @@ form button{
     width: 100%;
     font-family: 'Braah One';
     font-size: 18px;
-    color: #101C3A;
+    color: var(--cor1);
     background-color: white;
     border-radius: 10px;
     border: 0;
@@ -137,7 +138,7 @@ form option {
 /* FLASH */
 #success, #error {
     font-family: 'Braah One', sans-serif;
-    color: #101C3A;
+    color: var(--cor1);
     padding: 15px;
     width: 500px;
     border-radius: 15px;
@@ -193,10 +194,10 @@ form option {
 }
 #apresentacao button a{
     text-decoration: none;
-    color: #101C3A;
+    color: var(--cor1);
 }
 #sobre {
-    background-color: #3B4B6D;
+    background-color: var(--cor4);
     font-family: 'Braah One';
     color: white;
     padding: 20px;
@@ -225,7 +226,7 @@ form option {
     font-family: 'Braah One', sans-serif;
 }
 #sobre li{
-    background-color: #5F76B1;
+    background-color: var(--cor6);
     border: 0;
     padding: 20px 40px;
     border-radius: 16px;
@@ -276,6 +277,8 @@ form option {
 
 
 /* TABELA LIVROS */
+
+
 table {
     width: 90%;
     border-collapse: collapse;
@@ -406,6 +409,9 @@ table a {
         justify-content: center;
         text-align: center;
     }
+    #apresentacao img {
+        min-width: 200px;
+    }
     #livro_apresentacao {
         flex-direction: column;
         background: none;
@@ -445,12 +451,6 @@ table a {
         gap: 10px;
     }
 
-    nav img {
-        width: 40vw;
-        height: auto;
-        max-width: 150px;
-    }
-
     nav ul {
         flex-wrap: wrap;
         width: 100%;
@@ -485,6 +485,10 @@ table a {
 
     nav ul li a:hover::after {
         width: 100%;
+    }
+
+    #success, #error {
+        max-width: 350px;
     }
 
     .table {
