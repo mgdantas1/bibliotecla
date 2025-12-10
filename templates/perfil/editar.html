@@ -14,8 +14,7 @@
     <input type="text" id="nome" name="nome" value="{{ user.nome }}" required>
     <label for="email">Email:</label>
     <input type="email" id="email" name="email" value="{{ user.email }}" required>
-    <label for="senha">Senha:</label>
-    <input type="password" id="senha" name="senha" placeholder="Digite uma nova senha" required>
+    <a href="{{url_for('perfil.alterar_senha')}}" style=" font-size: 14px; color: white; font-family: 'Inter', sans-serif; font-weight: bold;">Alterar senha?</a>
     <button type="submit">Salvar</button>
     </form>
 {% endblock %}
