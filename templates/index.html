@@ -8,12 +8,14 @@
     {% if current_user.is_authenticated %}
         <div id="livro_apresentacao">
             {% for livro in livros %}
-                <div>
-                    <img src="../static/imagens/livros/{{livro.id}}.jpg" alt="">
-                    <h2>{{livro.titulo}}</h2>
-                    <h3>{{livro.autor}}</h3>
-                    <button><a href="{{ url_for('emprestimo.register_emprestimo', livro_id=livro.id) }}">Reservar</a></button>
-                </div>
+                {% if livro.quantidade > 0 %}
+                    <div>
+                        <img src="../static/imagens/livros/{{livro.id}}.jpg" alt="">
+                        <h2>{{livro.titulo}}</h2>
+                        <h3>{{livro.autor}}</h3>
+                        <button><a href="{{ url_for('emprestimo.register_emprestimo', livro_id=livro.id) }}">Reservar</a></button>
+                    </div>
+                {% endif %}
             {% endfor %}
         </div>
     {% else %}

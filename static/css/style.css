@@ -15,6 +15,7 @@
     --cor5: #405487;
     --cor5: #5F76B1;
     --cor6: #5F76B1;
+    --cor7: #a6b4da;
 }
 
 body {
@@ -48,6 +49,7 @@ nav {
     align-items: center;
     justify-content: space-between;
     padding: 10px;
+    gap: 30px;
 }
 #logo {
     height: 100%;
@@ -142,15 +144,27 @@ form option {
     padding: 15px;
     width: 500px;
     border-radius: 15px;
+    box-shadow: 0px 4px 10px var(--cor2);
 }
+
+/* #success {
+    background-color: var(--cor5);
+} */
 
 #success {
-    background-color: var(--cor5);
+    background-color: #bfdbcf;
+    color: #446d5a;
+    border: 2px solid #446d5a;
 }
 
-#error {
+
+/* #error {
     background-color: #874040;
     color: white;
+} */
+#error {
+    background-color: #e9b7bb;
+    color: #683135;
 }
 
 
@@ -197,21 +211,21 @@ form option {
     color: var(--cor1);
 }
 #sobre {
-    background-color: var(--cor4);
+    background-color: var(--cor7);
     font-family: 'Braah One';
-    color: white;
+    color: var(--cor1);
     padding: 20px;
     width: 100%;
     text-align: justify;
     border-top-right-radius: 20px;
     border-bottom-left-radius: 20px;
+    box-shadow: 8px 7px 0px var(--cor1);
 }
 #sobre span {
     display: flex;
     align-items: center;   
     justify-content: center;
     flex-direction: column;
-
     width: 100%;
     text-align: center;
 }
@@ -226,7 +240,7 @@ form option {
     font-family: 'Braah One', sans-serif;
 }
 #sobre li{
-    background-color: var(--cor6);
+    background-color: var(--cor4);
     border: 0;
     padding: 20px 40px;
     border-radius: 16px;

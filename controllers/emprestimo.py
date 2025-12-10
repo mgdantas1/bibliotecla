@@ -71,27 +71,28 @@ def register_emprestimo(livro_id: int):
 def editar_emprestimo(emprestimo_id: int):
     with Session(bind=engine) as db:
         emprestimo = db.get(Emprestimos, emprestimo_id)
-
-    if request.method == 'POST':
-        data_emprestimo = request.form['data_emprestimo']
-        data_prazo = request.form['data_prazo']
-        data_devolucao = request.form['data_devolucao']
-        status = request.form['status']
-        with Session(bind=engine) as db:
-            if emprestimo.status == 'Devolvido':
-                flash("A ação não pode ser realizada!", category='error')
+        if emprestimo:
+            if request.method == 'POST':
+                data_emprestimo = request.form['data_emprestimo']
+                data_prazo = request.form['data_prazo']
+                data_devolucao = request.form['data_devolucao']
+                status = request.form['status']
+                with Session(bind=engine) as db:
+                    if emprestimo.status == 'Devolvido':
+                        flash("A ação não pode ser realizada!", category='error')
+                        return redirect(url_for('emprestimo.listar_emprestimos'))
+                    emprestimo = db.get(Emprestimos, emprestimo_id)
+                    emprestimo.data_emprestimo = data_emprestimo
+                    emprestimo.data_prazo = data_prazo
+                    emprestimo.data_devolucao = data_devolucao
+                    emprestimo.status = status
+                    db.commit()
+                
+                flash('Empréstimo editado com sucesso!', category='success')
                 return redirect(url_for('emprestimo.listar_emprestimos'))
-            emprestimo = db.get(Emprestimos, emprestimo_id)
-            emprestimo.data_emprestimo = data_emprestimo
-            emprestimo.data_prazo = data_prazo
-            emprestimo.data_devolucao = data_devolucao
-            emprestimo.status = status
-            db.commit()
-        
-        flash('Empréstimo editado com sucesso!', category='success')
-        return redirect(url_for('emprestimo.listar_emprestimos'))
-    
-    return render_template('emprestimos/editar.html', emprestimo=emprestimo)
+            return render_template('emprestimos/editar.html', emprestimo=emprestimo)
+        flash("Emprestimo não encontrado", category='error')
+        return redirect(url_for("emprestimo.listar_emprestimos"))
 
 
 @emprestimo_bp.route('/devolver_livro/<int:emprestimo_id>', methods=['GET', 'POST'])
