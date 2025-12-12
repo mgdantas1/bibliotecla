@@ -44,22 +44,30 @@ def editar_perfil(user_id:int):
 def alterar_senha():
     with Session(bind=engine) as db:
         user = db.get(Users, current_user.id)
-    if request.method == 'POST':
-        senha = request.form['senha']
-        senha_ant = request.form['senha_ant']
-        if check_password_hash(user.senha, senha):
-            flash('Sua senha precisa ser diferente', category='error')
-            return redirect(url_for('perfil.alterar_senha'))
-        if not check_password_hash(user.senha, senha_ant):
-            flash('Insira a senha correta!', category='error')
-            return redirect(url_for('perfil.alterar_senha'))
-        user.senha = generate_password_hash(senha)
-        with Session(bind=engine) as db:
+
+        if request.method == 'POST':
+            nova_senha = request.form['senha']
+            senha_ant = request.form['senha_ant']
+
+            # verificar se a senha antiga está correta
+            if not check_password_hash(user.senha, senha_ant):
+                flash('Insira a senha correta!', category='error')
+                return redirect(url_for('perfil.alterar_senha'))
+
+            # verificar se a senha nova é igual a antiga
+            if check_password_hash(user.senha, nova_senha):
+                flash('A nova senha deve ser diferente da senha atual.', category='error')
+                return redirect(url_for('perfil.alterar_senha'))
+
+            # se a senha digitada for diferente da senha atual e a pessoa digitar a senha correta no campo de senha atual, atualiza a senha
+            user.senha = generate_password_hash(nova_senha)
             db.commit()
-        flash('Senha modificada com sucesso!', category='success')
-        return redirect(url_for('perfil.listar_perfil', user_id=user.id))
-    
+
+            flash('Senha modificada com sucesso!', category='success')
+            return redirect(url_for('perfil.listar_perfil', user_id=user.id))
+
     return render_template('alterar_senha.html', user=user)
+
 
 
 @perfil_bp.route('/deletar_usuario', methods=['GET'])
@@ -75,6 +83,5 @@ def deletar_usuario():
         db.delete(user)
         db.commit()
 
-    flash("Usuário deletado com sucesso!", category='success')
     return redirect(url_for('index'))
 
