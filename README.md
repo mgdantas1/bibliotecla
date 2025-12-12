@@ -13,18 +13,16 @@
 ## Como executar?
 
 1. Certifique-se de criar uma database com o nome `db_bibliotecla` 
-</br>
-</br>
+
 2. Verifique se as configurações estão corretas para o seu caso, se não, será preciso modificá-las dentro de `database/__init__.py`
-</br>
-</br>
-Configurações padrão:
-</br>
-**Porta: `3306`**
-</br>
-**Usuário: `root`**
-</br>
-**Conexão: `localhost`**
+
+    Configurações padrão:
+    </br>
+    **Porta: `3306`**
+    </br>
+    **Usuário: `root`**
+    </br>
+    **Conexão: `localhost`**
 
 ### No terminal:
 
