@@ -131,7 +131,9 @@ def deletar_emprestimo(emprestimo_id):
         if emprestimo and emprestimo.status == 'Devolvido':
             db.delete(emprestimo)
             db.commit()
-            flash("Emprestimo deletado com sucesso", category='succes')
+            flash("Emprestimo deletado com sucesso", category='success')
+            return redirect(url_for('emprestimo.listar_emprestimos'))
+        
         flash("A ação não pode ser realizada!", category='error')
-    return redirect(url_for('emprestimo.listar_emprestimos'))
+        return redirect(url_for('emprestimo.listar_emprestimos'))
 
