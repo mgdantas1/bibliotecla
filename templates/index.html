@@ -42,14 +42,35 @@
             marcar devoluções, consultar o histórico e cadastrar novos livros de forma 
             simples e rápida.
         </p>
+        
+        {% if current_user.is_authenticated %}
+            <span>
+                <h2>Bem-vindo(a), {{ current_user.nome }}!</h2>
+                <p>Você já pode acessar a biblioteca e gerenciar seus empréstimos.</p>
 
-        <span>
-            <h2>Pronto para começar?</h2>
-            <p>Cadastre-se ou faça login para acessar a biblioteca.</p>
-            <div class="botoes">
-                <button>Cadastro</button>
-                <button>Login</button>
-            </div>
-        </span>
+                <div class="botoes">
+                    <button>
+                        <a href="{{ url_for('livro.listar_livros') }}">
+                            Livros
+                        </a>
+                    </button>
+
+                    <button>
+                        <a href="{{ url_for('emprestimo.listar_emprestimos') }}">
+                            Empréstimos
+                        </a>
+                    </button>
+                </div>
+            </span>
+        {% else %}
+            <span>
+                <h2>Pronto para começar?</h2>
+                <p>Cadastre-se ou faça login para acessar a biblioteca.</p>
+                <div class="botoes">
+                    <button><a href="{{  url_for('auth.cadastro') }}">Cadastro</a></button>
+                    <button><a href="{{  url_for('auth.login') }}">Login</a></button>
+                </div>
+            </span>
+        {% endif %}
     </div>
 {% endblock %}

@@ -50,7 +50,7 @@ li {
 nav {
     background-color: var(--azul);
     height: 90px;
-    padding: 0 40px;
+    padding: 60px 40px;
 
     display: flex;
     align-items: center;
@@ -58,7 +58,7 @@ nav {
 }
 
 #logo {
-    height: 90px;
+    max-height: 100px;
 }
 
 nav ul {
@@ -93,10 +93,10 @@ main {
     max-width: 1200px;
     margin: 40px auto;
     padding: 0 20px;
-
+    align-items: center;
     display: flex;
     flex-direction: column;
-    gap: 35px;
+    gap: 10px;
 }
 
 
@@ -112,7 +112,7 @@ main {
 
 #apresentacao img{
     height: 100%;
-    max-width: 350px;
+    max-width: 450px;
 }
 
 #apresentacao h1 {
@@ -180,21 +180,21 @@ main {
   margin: 60px auto;
 }
 
-#sobre button {
-  padding: 12px;
-  border-radius: 15px;
-  font-weight: 600;
-  background-color: white;
-  width: 100px;
-  color: var(--azul);
-  text-align: center;
-
+.botoes > button {
+    background-color: white;
+    min-width: 100px;
 }
 
-#sobre button:hover {
-    border: 1px solid white;
-    color: white;
+.botoes a {
+    color: var(--azul);
+}
+
+.botoes button:hover {
     background-color: var(--azul);
+    border: 1px solid white;
+}
+.botoes button:hover > a {
+    color: white;
 }
 
 #sobre span > p {
@@ -206,6 +206,9 @@ form {
     display: flex;
     flex-direction: column;
     gap: 14px;
+    max-width: 500px;
+    width: 100%;
+    margin: auto;
 }
 
 label {
@@ -313,6 +316,9 @@ tbody tr:nth-child(even) {
     gap: 25px;
     padding: 25px;
     width: 100%;
+    background-color: #f8fafc;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    border-radius: 15px; 
 }
 
 .livro img {
@@ -329,6 +335,7 @@ tbody tr:nth-child(even) {
 
 .livro button {
     width: 100px;
+    margin-top: auto;
 }
 
 
@@ -341,6 +348,7 @@ tbody tr:nth-child(even) {
     padding: 32px;
     border-radius: 12px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    width: 100%;
 }
 
 #dados-perfil img {
@@ -374,19 +382,26 @@ tbody tr:nth-child(even) {
         justify-content: center;
     }
 
-    main {
-        align-items: center;
-    }
 
     h1 {
         text-align: center;
     }
 
+    #sobre {
+        margin: 0;
+    }
 
+    #apresentacao {
+        align-items: center;
+    }
 
     #apresentacao span {
         align-items: center;
         justify-content: center;
+    }
+    
+    #apresentacao span > button {
+        margin: auto;
     }
 
     .livro {
@@ -409,16 +424,18 @@ tbody tr:nth-child(even) {
         text-align: center;
     }
 
+
     #livro_apresentacao button {
         width: 100%;
     }
 
     #livro_apresentacao img {
         height: 100%;
+        max-width: 220px;
     }
 
     #apresentacao img {
-    min-width: 150px;
+        min-width: 150px;
     }
 
     .livro span {
