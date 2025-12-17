@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="../static/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Braah+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <title>
         {% block title %}
@@ -16,7 +15,7 @@
 </head>
 <body>
     <nav>
-        <a href="{{ url_for('index') }}"><img src="../static/imagens/logo/logo.svg" alt="" id="logo"></a>
+        <a href="{{ url_for('index') }}"><img src="../static/imagens/logo/logo-branca.png" alt="" id="logo"></a>
         <ul>
             <li><a href="{{ url_for('index') }}">Início</a></li>
             {% if current_user.is_authenticated %}

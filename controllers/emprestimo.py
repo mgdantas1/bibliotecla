@@ -1,5 +1,5 @@
 from flask import redirect, request, render_template, url_for, Blueprint, flash
-from datetime import date, timedelta
+from datetime import date, timedelta, datetime
 from database import engine
 from sqlalchemy.orm import Session
 from models.emprestimos import Emprestimos
@@ -73,20 +73,23 @@ def editar_emprestimo(emprestimo_id: int):
         emprestimo = db.get(Emprestimos, emprestimo_id)
         if emprestimo:
             if request.method == 'POST':
-                data_emprestimo = request.form['data_emprestimo']
-                data_prazo = request.form['data_prazo']
-                data_devolucao = request.form['data_devolucao']
-                status = request.form['status']
-                with Session(bind=engine) as db:
-                    if emprestimo.status == 'Devolvido':
-                        flash("A ação não pode ser realizada!", category='error')
-                        return redirect(url_for('emprestimo.listar_emprestimos'))
-                    emprestimo = db.get(Emprestimos, emprestimo_id)
-                    emprestimo.data_emprestimo = data_emprestimo
-                    emprestimo.data_prazo = data_prazo
-                    emprestimo.data_devolucao = data_devolucao
-                    emprestimo.status = status
-                    db.commit()
+                if emprestimo.status == 'Devolvido':
+                    flash("A ação não pode ser realizada!", category='error')
+                    return redirect(url_for('emprestimo.listar_emprestimos'))
+                
+                data_emprestimo = datetime.strptime(request.form['data_emprestimo'], '%Y-%m-%d').date()
+                data_prazo = datetime.strptime(request.form['data_prazo'], '%Y-%m-%d').date()
+                data_devolucao_str = request.form['data_devolucao']
+                if data_devolucao_str:
+                    data_devolucao = datetime.strptime(data_devolucao_str, '%Y-%m-%d').date()
+                else:
+                    data_devolucao = None                
+                
+                emprestimo = db.get(Emprestimos, emprestimo_id)
+                emprestimo.data_emprestimo = data_emprestimo
+                emprestimo.data_prazo = data_prazo
+                emprestimo.data_devolucao = data_devolucao
+                db.commit()
                 
                 flash('Empréstimo editado com sucesso!', category='success')
                 return redirect(url_for('emprestimo.listar_emprestimos'))

@@ -1,174 +1,105 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box
+    box-sizing: border-box;
 }
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 :root {
-    --cor1: #101C3A;
-    --cor2: #1D2F60;
-    --cor3: #1D365C;
-    --cor4: #3B4B6D;
-    --cor5: #405487;
-    --cor5: #5F76B1;
-    --cor6: #5F76B1;
-    --cor7: #a6b4da;
+    --azul: #0F172A;
+    --paragrafo: #64748B;
+    --border: #E5E7EB;
+    --success-bg: #DCFCE7;
+    --success-text: #166534;
+    --error-bg: #FEE2E2;
+    --error-text: #991B1B;
 }
 
 body {
-    background: var(--cor5);
-    background: linear-gradient(207deg,rgba(64, 84, 135, 0.92) 5%, rgba(64, 84, 135, 1) 30%, rgb(25, 47, 80) 75%);
+    font-family: 'Inter', sans-serif;
+    background-color: #F8FAFC;
     min-height: 100vh;
 }
 
+
 h1 {
-    font-family: 'Braah One';
-    color: white;
-    font-size: 40px;
+    font-size: 2.2rem;
+    font-weight: 700;
 }
 
 h2 {
-    font-family: 'Braah One';
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+p {
+    color: var(--paragrafo);
+    line-height: 1.6;
+}
+
+a {
     color: white;
+    text-decoration: none;
 }
 
 li {
     list-style: none;
 }
 
-/* NAVBAR */
 nav {
-    background-color: var(--cor2);
-    height: 120px;
-    border-bottom-left-radius: 18px;
-    border-bottom-right-radius: 18px;
+    background-color: var(--azul);
+    height: 90px;
+    padding: 0 40px;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px;
-    gap: 30px;
 }
+
 #logo {
-    height: 100%;
-    width: 10vw;
-    min-width: 100px;
-    max-width: 120px;
+    height: 80px;
 }
+
 nav ul {
+    list-style: none;
     display: flex;
-    gap: 15px;
-    flex-wrap: wrap;
+    gap: 25px;
 }
-nav ul li{
-    font-family: "Inter", sans-serif;
-    font-weight: bold;
-    width: 150px;
-    background-color: white;
-    padding: 6px 28px;
-    border-radius: 10px;
-    text-align: center;
-}
+
 nav ul li a {
-    color: var(--cor3);
-    text-decoration: none;
+    color: #E5E7EB;
+    font-weight: 500;
+    position: relative;
 }
 
-/* MAIN */
+nav ul li a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0%;
+    height: 2px;
+    background-color: white;
+    transition: width 0.3s ease;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+
 main {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 20px 35px;
-    gap: 30px;
+    gap: 35px;
 }
 
 
-
-/* FORMS */
-form {
-    background-color: var(--cor1);
-    display: flex;
-    flex-direction: column;
-    padding: 26px;
-    width: 300px;
-    align-items: center;
-    border-top-right-radius: 20px;
-    border-bottom-left-radius: 20px;
-    gap: 8px;
-    height: 350px;
-}
-label {
-    align-self: flex-start;
-    font-family: 'Braah One';
-    color: white;
-    font-size: 18px;
-}
-input {
-    width: 100%;
-    border-radius: 10px;
-    border: none;
-    padding: 4px;
-    padding: 5px;
-    outline: none;
-}
-form button{
-    width: 100%;
-    font-family: 'Braah One';
-    font-size: 18px;
-    color: var(--cor1);
-    background-color: white;
-    border-radius: 10px;
-    border: 0;
-    padding: 4px;
-    margin-top: auto;
-}
-form select {
-    width: 100%;
-    background-color: white;
-    padding: 5px;
-}
-form option {
-    padding: 10px;
-    font-family: 'Baah One', sans-serif;
-}
-
-
-/* FLASH */
-#success, #error {
-    font-family: 'Braah One', sans-serif;
-    color: var(--cor1);
-    padding: 15px;
-    width: 500px;
-    border-radius: 15px;
-    box-shadow: 0px 4px 10px var(--cor2);
-}
-
-/* #success {
-    background-color: var(--cor5);
-} */
-
-#success {
-    background-color: #bfdbcf;
-    color: #446d5a;
-    border: 2px solid #446d5a;
-}
-
-
-/* #error {
-    background-color: #874040;
-    color: white;
-} */
-#error {
-    background-color: #e9b7bb;
-    color: #683135;
-}
-
-
-/* INDEX */
 #apresentacao {
     height: 100%;
     width: 100%;
@@ -178,364 +109,320 @@ form option {
     align-items: center;
     gap: 30px;
 }
-#apresentacao span {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-#apresentacao h1 {
-    font-size: 70px;
-    align-self: flex-start;
-}
-#apresentacao p{
-    color: white;
-    font-family: "Inter", sans-serif;
-    font-size: 18px;
-    margin-bottom: 8px;
-}
+
 #apresentacao img{
     height: 100%;
-    max-width: 500px;
+    max-width: 350px;
+    mix-blend-mode: ;
 }
-#apresentacao button{
-    background-color: white;
-    font-size: 24px;
-    font-family: 'Braah One';
-    border: 0;
-    padding: 10px 30px;
-    border-radius: 16px;
-    margin-top: 20px;
-}
-#apresentacao button a{
-    text-decoration: none;
-    color: var(--cor1);
-}
-#sobre {
-    background-color: var(--cor7);
-    font-family: 'Braah One';
-    color: var(--cor1);
-    padding: 20px;
-    width: 100%;
-    text-align: justify;
-    border-top-right-radius: 20px;
-    border-bottom-left-radius: 20px;
-    box-shadow: 8px 7px 0px var(--cor1);
-}
-#sobre span {
-    display: flex;
-    align-items: center;   
-    justify-content: center;
-    flex-direction: column;
-    width: 100%;
-    text-align: center;
-}
-#sobre span ul {
-    display: flex;
-    gap: 15px;
-}
-#sobre h2{
-    margin: 30px 0;
-}
-#sobre p {
-    font-family: 'Braah One', sans-serif;
-}
-#sobre li{
-    background-color: var(--cor4);
-    border: 0;
-    padding: 20px 40px;
-    border-radius: 16px;
-}
-#sobre a{
-    color: white;
-    text-decoration: none;
-    font-family: 'Braah One';
-    font-size: 18px;
+
+#apresentacao h1 {
+    font-size: 4.5rem;
 }
 
 #livro_apresentacao {
-   background-color: white;
-   padding: 25px;
-   border-radius: 15px; 
-   box-shadow: 0 4px 10px #00000026;
-   display: flex;
-   gap: 15px;
-   color: var(--cor1);
-   font-family: 'Braah One', sans-serif;
+    background: #f8fafc;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    padding: 25px;
+    border-radius: 15px; 
+    display: flex;
+    gap: 15px;
+    color: var(--cor1);
+    font-family: 'Braah One', sans-serif;
+    width: 100%;
 }
+
 
 #livro_apresentacao div {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 10px;
     width: 20%;
 }
 
 #livro_apresentacao img {
     width: 100%;
-    border-radius: 15px;
+    height: 280px;          
+    object-fit: cover;     
+    border-radius: 10px;
+    margin-bottom: 10px;
 }
 
 #livro_apresentacao button {
-    background-color: var(--cor2);
-    font-family: 'Braah One';
-    border: 0;
-    padding: 8px 20px;
-    border-radius: 10px;
     margin-top: auto;
 }
 
-#livro_apresentacao a {
-    text-decoration: none;
+/* SOBRE */
+
+#sobre {
+  background: #f8fafc;
+  padding: 32px;
+  border-radius: 12px;
+  width: 100%;
+  margin: 60px auto;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  text-align: justify;
+}
+
+#sobre h2 {
+  font-size: 2rem;
+  margin-bottom: 16px;
+  position: relative;
+}
+
+#sobre span {
+  background-color: var(--azul);
+  color: white;
+  padding: 40px;
+  border-radius: 16px;
+  text-align: center;
+  margin: 60px auto;
+}
+
+#sobre button {
+  padding: 12px;
+  border-radius: 15px;
+  font-weight: 600;
+  background-color: white;
+  width: 100px;
+  color: var(--azul);
+  text-align: center;
+
+}
+
+#sobre button:hover {
+    border: 1px solid white;
+    color: white;
+    background-color: var(--azul);
+}
+
+#sobre span > p {
+    color: white;
+} 
+
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+label {
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+input {
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    font-size: 0.95rem;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+button {
+    margin-top: 10px;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+
+    background-color: var(--azul);
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+button > a {
     color: white;
 }
 
+button:hover {
+    border: 1px solid var(--azul);
+    background-color: white;
+    color: var(--azul);
+}
 
-/* TABELA LIVROS */
-
-
-table {
-    width: 90%;
-    border-collapse: collapse;
-    background: white;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 10px #00000026;
-    font-family: "Inter", sans-serif;
-    text-align: center;
+button:hover > a {
+    color: var(--azul);
+    text-decoration: none;
 }
 
 
+#success,
+#error {
+    padding: 15px;
+    border-radius: 10px;
+    font-weight: 500;
+}
 
-thead tr {
-    background-color: var(--cor1);
+#success {
+    background-color: var(--success-bg);
+    color: var(--success-text);
+    border: 1px solid #86EFAC;
+}
+
+#error {
+    background-color: var(--error-bg);
+    color: var(--error-text);
+    border: 1px solid #FCA5A5;
+}
+
+
+.table {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--bg-card);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+thead {
+    background-color: var(--azul);
 }
 
 th {
-    text-align: center;
-    padding: 14px 10px;
+    padding: 14px;
     color: white;
-    font-size: 18px;
-    font-family: 'Braah One', sans-serif;
-    letter-spacing: 1px;
-}
-
-tbody tr:nth-child(even) {
-    background-color: #eef2f9;
+    font-weight: 600;
 }
 
 td {
-    border-bottom: 1px solid #c5cde0;
-    padding: 12px 10px;
-    color: var(--cor1);
-    font-size: 16px;
+    padding: 12px;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.95rem;
 }
 
-table button {
-    background-color: var(--cor2);
-    font-family: 'Braah One';
-    border: 0;
-    padding: 8px 20px;
-    border-radius: 10px;
-}
-
-table a {
-    text-decoration: none;
-    color: white;
+tbody tr:nth-child(even) {
+    background-color: #F1F5F9;
 }
 
 
-/* PERFIL */
-.button-perfil {
-    background-color: var(--cor2);
-    font-family: 'Braah One';
-    border: 0;
-    padding: 10px 30px;
-    border-radius: 16px;
-}
-.button-perfil a{
-    text-decoration: none;
-    color: white;
-}
-#dados-perfil {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: var(--cor2);
-    text-align: center;
-    gap: 15px;
-    background-color: white;
-    padding: 25px;
-    border-radius: 25px;
-}
-#dados-perfil ul {
-    display: flex;
-    gap: 10px;
-}
-#dados-perfil li {
-    font-family: "Inter", sans-serif;
-    align-self: self-start;
-}
-#dados-perfil img {
-    width: 150px;
-    height: 100%;
-}
-
-/* LIVROS */
 .livro {
     display: flex;
-    width: 100%;
     gap: 25px;
-    background-color: white;
     padding: 25px;
-    border-radius: 15px;
-    font-family: 'Inter', sans-serif;
+    width: 100%;
 }
-.livro h1, h2 {
-    color: var(--cor1);
-}
+
 .livro img {
-    max-width: 350px;
-    height: 100%;
-    border-radius: 15px;
-    box-shadow: 0 4px 10px #00000026;
+    max-width: 220px;
+    border-radius: 12px;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.08);
 }
-.livro button {
-    background-color: var(--cor2);
-    font-family: 'Braah One';
-    border: 0;
-    padding: 8px 20px;
-    border-radius: 10px;
-    width: 100px;
-}
-.livro a {
-    text-decoration: none;
-    color: white;
-}
+
 .livro span {
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-@media screen and (max-width: 768px) {
-    #apresentacao {
-        justify-content: center;
-        text-align: center;
-    }
-    #apresentacao img {
-        min-width: 200px;
-    }
-    #livro_apresentacao {
-        flex-direction: column;
-        background: none;
-        box-shadow: none;
-        padding: 0;
-        text-align: center;
-    }
-    #livro_apresentacao div {
-        align-items: center;
-        width: 100%;
-        background-color: white;
-        padding: 15px;
-        border-radius: 15px;
-        box-shadow: 0 4px 10px #00000026;
-    }
-    #livro_apresentacao img {
-        height: 100%;
-        max-width: 100%;
-    }
-    .livro {
-        flex-direction: column;
-        align-items: center;
-    }
-    .livro img{
-        max-width: 100%;
-    }
-    .livro button {
-        width: 100%;
-    }
-    #sobre a {
-        font-size: 1em;
-    }
+.livro button {
+    width: 100px;
+}
+
+
+#dados-perfil {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    background: #f8fafc;
+    padding: 32px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+#dados-perfil img {
+    width: 140px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+#dados-perfil ul {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+
+#dados-perfil button {
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+
     nav {
         flex-direction: column;
         height: auto;
         padding: 20px;
-        gap: 10px;
+        gap: 15px;
     }
 
     nav ul {
         flex-wrap: wrap;
-        width: 100%;
+        justify-content: center;
+    }
+
+    main {
+        align-items: center;
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+
+
+    #apresentacao span {
         align-items: center;
         justify-content: center;
-        gap: 15px;
-    }
-    
-    nav ul li {
-        background: none;
-        padding: 10px;
-        width: auto;
-        padding: 0;
     }
 
-    nav ul li a {
-        position: relative;
-        color: white;
-        text-decoration: none;
-    }
-
-    nav ul li a::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        bottom: -3px; 
-        width: 0%;
-        height: 2px;
-        background-color: var(--cor5);
-        transition: width 0.3s ease;
-    }
-
-    nav ul li a:hover::after {
-        width: 100%;
-    }
-
-    #success, #error {
-        max-width: 350px;
-    }
-
-    .table {
-    width: 100%;
-    overflow-x: scroll;
-    }
-    .table::-webkit-scrollbar {
-        height: 10px;     
-        width: 10px;      
-    }
-
-    .table::-webkit-scrollbar-track {
-        background: #c5cde0; 
-        border-radius: 10px;
-    }
-
-    .table::-webkit-scrollbar-thumb {
-        background-color: var(--cor2);
-        border-radius: 10px;
-        border: 2px solid #c5cde0;
-    }
-
-    .table::-webkit-scrollbar-thumb:hover {
-        background-color: var(--cor1);
+    .livro {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
     }
 
     table {
-        min-width: 600px; 
+        min-width: 600px;
     }
 
-    th, td {
-        padding: 10px;
-        font-size: 14px;
-        white-space: nowrap; 
+    #livro_apresentacao {
+        flex-direction: column;
+    }
+
+    #livro_apresentacao div {
+        width: 100%;
+        align-items: center;
+        text-align: center;
+    }
+
+    #livro_apresentacao button {
+        width: 100%;
+    }
+
+    #livro_apresentacao img {
+        height: 100%;
+    }
+
+    #apresentacao img {
+    min-width: 150px;
+    }
+
+    .livro span {
+        align-items: center;
     }
 }

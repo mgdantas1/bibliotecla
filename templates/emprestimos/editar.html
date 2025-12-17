@@ -16,24 +16,6 @@
         <input type="date" value="{{emprestimo.data_prazo}}" name="data_prazo">
         <label for="data_devolucao">Data da devolução:</label>
         <input type="date" value="{{emprestimo.data_devolucao}}" name="data_devolucao">
-        <label for="status">Status:</label>
-        <select name="status" value="{{emprestimo.status}}">
-            {% if emprestimo.status == "Pendente" %}
-                <option value="Pendente" selected>Pendente</option>        
-            {% else %}
-                <option value="Pendente">Pendente</option>
-            {% endif %}
-            {% if emprestimo.status == "Devolvido" %}
-                <option value="Devolvido" selected>Devolvido</option>        
-            {% else %}
-                <option value="Devolvido">Devolvido</option>
-            {% endif %}
-            {% if emprestimo.status == "Atrasado" %}
-                <option value="Atrasado" selected>Atrasado</option>        
-            {% else %}
-                <option value="Atrasado">Atrasado</option>
-            {% endif %}
-        </select>
         <button>Enviar</button>
     </form>
 {% endblock %}

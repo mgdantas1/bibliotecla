@@ -25,13 +25,11 @@ def editar_perfil(user_id:int):
     if request.method == 'POST':
         nome = request.form.get('nome')
         email = request.form.get('email')
-        senha = request.form.get('senha')
 
         with Session(bind=engine) as db:
             user = db.get(Users, user_id)
             user.nome = nome
             user.email = email
-            user.senha = generate_password_hash(senha)
             db.commit()
 
         flash('Usuário editado com sucesso!', category='success')

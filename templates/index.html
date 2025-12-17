@@ -26,7 +26,7 @@
                 <p>Cadastre-se e comece a usar a biblioteca online da escola agora mesmo!</p>
                 <button><a href="{{ url_for('auth.cadastro')}}">Cadastrar</a></button>
             </span>
-            <img src="../static/imagens/logo/logo.svg" alt="">
+            <img src="../static/imagens/logo/logo-azul.png" alt="">
         </div>
     {% endif %}
     <div id="sobre">
@@ -44,12 +44,12 @@
         </p>
 
         <span>
-            <h2>Realize cadastro ou login!</h2>
-            <ul>
-                <li><a href="{{ url_for('auth.cadastro')}}">Cadastro</a></li>
-                <li><a href="{{ url_for('auth.login')}}">Login</a></li>
-            </ul>
-            
+            <h2>Pronto para começar?</h2>
+            <p>Cadastre-se ou faça login para acessar a biblioteca.</p>
+            <div class="botoes">
+                <button>Cadastro</button>
+                <button>Login</button>
+            </div>
         </span>
     </div>
 {% endblock %}
