@@ -25,15 +25,18 @@ def editar_perfil(user_id:int):
     if request.method == 'POST':
         nome = request.form.get('nome')
         email = request.form.get('email')
-
         with Session(bind=engine) as db:
+            verificar_user = db.query(Users).filter_by(email=email).first()
+            if verificar_user:
+                flash('Já existe um usuário com esse email', category='error')
+                return redirect(url_for('perfil.listar_perfil', user_id=user_id))
             user = db.get(Users, user_id)
             user.nome = nome
             user.email = email
             db.commit()
 
-        flash('Usuário editado com sucesso!', category='success')
-        return redirect(url_for('perfil.listar_perfil', user_id=user_id))
+            flash('Usuário editado com sucesso!', category='success')
+            return redirect(url_for('perfil.listar_perfil', user_id=user_id))
 
     return render_template('perfil/editar.html', user=user)
 
