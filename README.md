@@ -12,24 +12,12 @@
 
 ## Como executar?
 
-1. Certifique-se de criar uma database com o nome `db_bibliotecla` 
-
-2. Verifique se as configurações estão corretas para o seu caso, se não, será preciso modificá-las dentro de `database/__init__.py`
-
-    Configurações padrão:
-    </br>
-    **Porta: `3306`**
-    </br>
-    **Usuário: `root`**
-    </br>
-    **Conexão: `localhost`**
-
 ### No terminal:
 
 **1. Clone o repositório**
 
 ```
-    https://github.com/mgdantas1/bibliotecla.git
+    git clone https://github.com/mgdantas1/bibliotecla.git
 ```
 
 **2. Crie um ambiente virtual e o ative**

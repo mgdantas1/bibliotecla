@@ -8,3 +8,6 @@ ENV/
 # Arquivos cache do Python
 __pycache__/
 *.pyc
+
+# Banco da dados
+*.db
