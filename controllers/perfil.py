@@ -26,13 +26,13 @@ def editar_perfil(user_id:int):
         nome = request.form.get('nome')
         email = request.form.get('email')
         with Session(bind=engine) as db:
-            verificar_user = db.query(Users).filter_by(email=email).first()
+            verificar_user = db.query(Users).filter(Users.email == email, Users.id != user_id).first()
             if verificar_user:
                 flash('Já existe um usuário com esse email', category='error')
                 return redirect(url_for('perfil.listar_perfil', user_id=user_id))
-            user = db.get(Users, user_id)
-            user.nome = nome
-            user.email = email
+            usuario = db.get(Users, user_id)
+            usuario.nome = nome
+            usuario.email = email
             db.commit()
 
             flash('Usuário editado com sucesso!', category='success')
